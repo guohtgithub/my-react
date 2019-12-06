@@ -1,4 +1,4 @@
-import React,{Fragment} from 'react'
+import React from 'react'
 import loadable from '../util/loadable'
 import {RenderRoutes} from './utils'
 const UI = ({routes}) => (
@@ -43,7 +43,7 @@ export const main = [
   },{
     path:'/',exact:true,name:'首页',Redirect:'/index'
   },{
-    path:'index',name:'首页',component:Index,
+    path:'/index',name:'首页',component:Index,
     routes:menus
   }
 ]

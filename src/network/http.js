@@ -22,7 +22,6 @@ service.interceptors.request.use(
     // headers 中添加token
     const token = localStorage.getItem('token')
     token && (config.headers.token = token)
-    console.log(config,'0000')
     return config
   },
   error =>{
@@ -39,7 +38,6 @@ service.interceptors.response.use(
     if(!res.data){
       message.error(res.data.message,1.5)
     }else{
-      console.log(res.data,'--')
       return res
     }
   },
