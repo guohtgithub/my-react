@@ -19,7 +19,6 @@ class RegistrationForm extends React.Component{
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err,values) => {
       if(!err){
-        console.log('Received values of form: ',values)
         let param = {
           username:values.username,
           password:values.password,

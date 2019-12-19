@@ -8,6 +8,17 @@ export const deleObj = (obj,key) =>{
   return obj2
 }
 
+export const validatorPhone = () =>{
+  return (rule,value,callback) => {
+    const form = this.props.form
+    if(value && !(/^1[3-9]\d{3-8}$/.test(form.getFieldValue('phone')))){
+      callback('请输入正确的手机号')
+    }else{
+      callback()
+    }
+  }
+}
+
 export const deepFlatten = arr => 
   [].concat(...arr.map(v => 
       Array.isArray(v)?deepFlatten(v):(

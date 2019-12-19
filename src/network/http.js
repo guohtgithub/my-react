@@ -42,7 +42,6 @@ service.interceptors.response.use(
     }
   },
   error => { // 请求已发出，但不是在2xx的范围
-    console.log(error,'err')
     cloneLoading()
     if(error && error.response){
       switch(error.response.status){

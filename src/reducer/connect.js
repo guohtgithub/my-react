@@ -7,12 +7,13 @@ import {post} from '../network/http'
 import {receive} from './actionCreate'
 
 export const mapLogout = {
-  mapStateProps: state => {
+  mapStateProps: (state) => {
     return {headerData:{},...state.slidecollapsed}
   },
-  mapDispatchToProps:dispatch => {
+  mapDispatchToProps:(dispatch) => {
     return{
-      onSlidecollapsed:() => dispatch(action_slidecollapsed),getRouterConfig:()=>{
+      onSlidecollapsed:() => dispatch(action_slidecollapsed),
+      getRouterConfig:()=>{
         return dispatch(router_config)
       },
       toggleSlide:() =>{
@@ -22,7 +23,6 @@ export const mapLogout = {
         return dispatch(fetchPosts('/logout',action_slidecollapsed.type,'logoutData',data))
       },
       toggleTabs:(data) => {
-        console.log(data,'toggleTabs')
         dispatch(receive(action_slidecollapsed.type,'headerData',{...data}))
       }
     }
@@ -36,7 +36,6 @@ export const mapIndex = {
   mapDispatchToProps: dispatch => {
     return {
       toggleTabs : (data) => {
-        console.log(data)
         dispatch(receive(action_slidecollapsed.type,'headerData',{
           ...data
         }))

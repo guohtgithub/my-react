@@ -15,16 +15,15 @@ export const RouteWithSubRoutes = route =>(<Route
       />
     }
     return (
-      route && (route.Redirect 
-          ? (<Redirect to={route.Redirect} />)
-            :(<route.component {...props} routes={route.routes}/>))
+      route && (route.Redirect ? (<Redirect to={route.Redirect} />):
+        (<route.component {...props} routes={route.routes}/>))
     )
   }}
 />)
 
 // 循环渲染当前路由数组中一维数组中得组件
 export const RenderRoutes = ({routes}) => {
-  return (routes.map((route,i) => <RouteWithSubRoutes key={i} {...route}/>))
+  return (routes.map((route,i) => <RouteWithSubRoutes key={i} {...route} />))
 }
 
 // -children 返回当前路径，会与当前route 组件进行匹配，如果匹配，则返回当前路径match，否则返回null
@@ -44,7 +43,7 @@ export const OldSchollMenuLink = ({route}) => (
       return (
         <div className={match ? 'active':''}>
           <Link to={route.path}>
-            <Icon type='route.icon'></Icon>
+            <Icon type={route.icon} />
             {route.name}
           </Link>
         </div>

@@ -1,12 +1,13 @@
 import React,{Component} from 'react'
-import {Menu} from 'antd'
-import {Layout} from 'antd/lib/index'
+import {Menu,Layout} from 'antd'
+// import {Layout} from 'antd/lib/index'
 import {mapLogout} from '../reducer/connect'
 import {connect} from 'react-redux'
 import {filterData} from '../util/index'
 import {menus as menusConfig} from '../router/index'
 import sliderMenu from '../components/slideMenu'
 const {Sider} = Layout
+
 class MySlider extends Component{
   render (){
     let {slidecollapsed,getRouterConfig} = this.props
@@ -18,11 +19,16 @@ class MySlider extends Component{
         collapsed={slidecollapsed}
       >
         <div className="logo" />
-        <div onClick={getRouterConfig}>
-          <Menu theme='dark' mode='inline' defaultSelectedKeys={['1']}>
-            {sliderMenu(menusConfig)}
-          </Menu>
-        </div>
+          <div onClick={getRouterConfig}>
+            <Menu 
+              theme='dark' 
+              mode='inline' 
+              defaultSelectedKeys={['1']}
+              style={{textAlign:'left'}}
+            >
+              {sliderMenu(menusConfig)}
+            </Menu>
+          </div>
       </Sider>
     )
   }

@@ -12,9 +12,8 @@ const UI = ({routes}) => (
 const Icon = () =><h3>Icon <input type='text' /></h3>
 const Animation = () => <h3>Animation</h3>
 const From = () => <h3>From</h3>
-const Home = loadable(()=>import('../views/home'))
-const Page1 = loadable(()=>import('../views/page1'))
-const Page2 = loadable(()=>import('../views/page2'))
+const Page1 = loadable(()=>import('../views/user/page1'))
+const Page2 = loadable(()=>import('../views/user/page2'))
 const register = loadable(()=>import('../views/register/index'))
 const Index = loadable(()=>import('../views/layout/index'))
 const Login = loadable(()=>import('../views/login/index'))
@@ -22,13 +21,15 @@ const Login = loadable(()=>import('../views/login/index'))
 // 菜单相关路由
 export const menus = [
   {path:'/index/UI',name:'UI',icon:'video-camera',component:UI,routes:[
-    {path:'index/UI/page1',name:'用户列表1',icon:'video-camera',component:Page1},
-    {path:'index/UI/page2',name:'用户列表2',icon:'video-camera',component:Page2},
-    {path:'index/UI/icon',name:'图标',icon:'video-camera',component:Icon}
-  ]},{
-    path:'index/animation',name:'动画',icon:'video-camera',component:Animation
-  },{
-    path:'index/from',name:'表单',icon:'video-camera',component:From
+    {path:'/index/UI/page1',name:'用户列表1',icon:'video-camera',component:Page1},
+    {path:'/index/UI/page2',name:'用户列表2',icon:'video-camera',component:Page2},
+    {path:'/index/UI/icon',name:'图标',icon:'video-camera',component:Icon}
+  ]},
+  {
+    path:'/index/animation',name:'动画',icon:'video-camera',component:Animation
+  },
+  {
+    path:'/index/from',name:'表单',icon:'video-camera',component:From
   }
 ]
 
