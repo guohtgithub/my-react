@@ -13,10 +13,6 @@ class EditableTable extends React.Component{
     return record.key === editingKey
   }
 
-  edit(key){
-    this.setState({editingKey:key})
-  }
-
   save(form,key){
     form.validateFields((err,row) => {
       if(err) return;
@@ -66,6 +62,7 @@ class EditableTable extends React.Component{
         }
       }
     })
+    
     return (
       <Table {...state} components={components} dataSource={data} rowClassName={rowClassName} columns={columns} />
     )

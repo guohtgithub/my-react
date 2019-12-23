@@ -1,13 +1,12 @@
 import React from 'react'
 import { Form, Select, Input, Tooltip, 
-  Icon, Row, Col, Button, Checkbox } from 'antd'
+  Icon, Row, Col, Button, Checkbox,message } from 'antd'
 
 import './index.css'
 
 import {register} from '../../network/api/login'
 
 const {Option} = Select
-// const AutoCompleteOption = AutoComplete.Option
 
 class RegistrationForm extends React.Component{
   state = {
@@ -26,7 +25,12 @@ class RegistrationForm extends React.Component{
           email:values.email
         }
         register(param).then(data => {
-          console.log(data,'----')
+          if(data.code === 200){
+            message.info(data.message,1.5)
+            setTimeout(() => {
+              window.location.href = '/login'
+            },2000)
+          }
         })
       }
     })

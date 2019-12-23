@@ -1,7 +1,8 @@
 import React from 'react'
 import TableComponent from '../../components/table/table'
 import {tableMix} from '../../components/table/mix'
-import AddModel from './add'
+import {getUserList,editUserList,deleteUserList,addUsersList} from '../../network/api/table'
+import AddModel from './add.js'
 
 class Page1 extends React.Component{
   constructor(props){
@@ -10,9 +11,9 @@ class Page1 extends React.Component{
     this.state = {
       ...tableMix.state
     }
+    
   }
   componentDidMount(){
-    
     let {pagination} = this.state
     pagination.onShowSizeChange = (current,pageSize) => {
       pagination.current = current
@@ -28,14 +29,18 @@ class Page1 extends React.Component{
     pagination.onChange = (page,pageSize) => {
       pagination.current = page
       pagination.pageSize = pageSize
+      this.onGetUserList()
       this.setState({
         pagination:pagination
       })
     }
-    this.state.handleAdd = this.hanldeAdd
+    
+    this.state.handleAdd = this.handleAdd
     this.setState({
       pagination:pagination
     })
+    
+    this.onGetUserList()
   }
   handleAdd = async () => {
     this.setState({
@@ -44,44 +49,75 @@ class Page1 extends React.Component{
   }
 
   addUserList = async (data) => {
-    /*
-    let data = {}
-    let num = Math.floor(Math.random()*10000 -1000)
-    data = {
-      key:num,
-      username:`add ${num}`,
-      phone:'18******988',
-      email:'xxxx.@163.com'
-    }
-    */
-    // let res = await addUsersList(data)
+    let res = await addUsersList(data)
     this.setState({
       modelLoading:false,
       modelVisible:false
     })
-    /*
-      if(res.code === 200){
-        this.onGetUserList()
-      }
-    */
+    
+    if(res.code === 200){
+      this.onGetUserList()
+    }
   }
 
   handleUserList = async (obj = {page:1}) => {
     this.setState({
       loading:true
     })
-    /*
     let data = await getUserList ({
       ...obj
     })
-    */
-    let {data} = this.state
+    
+    let {pagination} = this.state
+    pagination.pageSize = obj.pageSize ? obj.pageSize:pagination.pageSize
+    
+    pagination.total = data.data?data.data.count:1
+    
+    this.setState({
+      data:data.data?data.data.rows:[],
+      loading:false,
+      pagination:pagination
+    })
+  }
+
+  onGetUserList () {
+    this.handleUserList({
+      page:this.state.pagination.current,
+      pageSize:this.state.pagination.pageSize
+    })
+  }
+
+  save(form,key){
+    form.validateFields(async (err,row) => {
+      if(err) return
+      let data = await editUserList(row)
+      if(data.code === 200){
+        this.onGetUserList()
+      }
+      this.setState({editingKey:''})
+    })
+  }
+
+  async onDelete (record,index){
+    let data = await deleteUserList(record)
+    console.log(record,'delet info')
+    if(data.code === 200){
+      this.setState({deleteIndex:record.key})
+      this.onGetUserList()
+    }
   }
 
   render(){
+    let state = this.state
+    let {modelVisible,modelLoading} = state
     return(
       <div>
-        this is page1
+        <AddModel 
+          {...state} 
+          modelVisible={modelVisible} 
+          modelLoading={modelLoading} 
+          addUserList={this.addUserList}></AddModel>
+        <TableComponent {...state}></TableComponent>
       </div>
     )
   }

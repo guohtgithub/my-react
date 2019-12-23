@@ -17,7 +17,7 @@ class TableComponent extends React.Component{
     let defaultState = {
       showEditTable:false,
       bordered:false,
-      loding:false,
+      loading:false,
       pagination,
       size:'default',
       expandedRowRender:undefined,
@@ -111,7 +111,7 @@ class TableComponent extends React.Component{
               <Radio.Group size='default' value={state.size} onChange={this.handleSizeChange}>
                 <Radio.Button value='default'>Default</Radio.Button>
                 <Radio.Button value='middle'>Middle</Radio.Button>
-                <Radio.Button value='small'></Radio.Button>
+                <Radio.Button value='small'>Small</Radio.Button>
               </Radio.Group>
             </FormItem>
             <FormItem label='Pagination'>
@@ -127,7 +127,7 @@ class TableComponent extends React.Component{
             </FormItem>
           </Form>
         </div>}
-        {typeof handleAdd === 'function' && <Button className='editable-add-btn mb-s' onClick={this.handleAdd}>Add</Button>}
+        {typeof handleAdd === 'function' && <Button style={{marginBottom:'16px'}} className='editable-add-btn mb-s' onClick={this.handleAdd}>Add</Button>}
         <EditableTable {...state} 
           columns={columns} 
           data={state.hasData?data:null}

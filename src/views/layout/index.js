@@ -11,7 +11,7 @@ import MySlider from '../../components/slider'
 import {connect} from 'react-redux'
 import {mapIndex} from '../../reducer/connect'
 
-const {Header, Footer, Sider, Content} = Layout
+// const {Header, Footer, Sider, Content} = Layout
 
 class Index extends Component{
   state = {

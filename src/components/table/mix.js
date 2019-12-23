@@ -44,14 +44,14 @@ let tableMixNativ = {
         dataIndex:'username',
         key:'username',
         width:150,
-        eidtable:true,
-        render:text => <a href='javascript:;'>{text}</a>
+        editable:true,
+        render:text => <a href="javascript:void(0)">{text}</a>
       },{
         title:'手机号码',
         dataIndex:'phone',
         key:'phone',
-        width:150,
-        eidtable:true
+        width:200,
+        editable:true
       },{
         title:'用户邮箱',
         dataIndex:'email',
@@ -87,16 +87,15 @@ let tableMixNativ = {
           }
           return(
             <span>
-              <a href='javascrip:;'><Icon type='show'></Icon>查看详情</a>
-              <Divider type='vertical'>
-                <a href='javascript:;' onClick={_self.handleEdit(record)}><Icon type='eidt'></Icon>编辑</a>
-              </Divider>
+              <a href='javascrip:;' onClick={_self.showDetailInfo(record)}><Icon type='show'></Icon>查看详情</a>
+              <Divider type='vertical'></Divider>
+              <a href='javascript:;' onClick={_self.handleEdit(record)}><Icon type='edit'></Icon>编辑</a>
+              <Divider type='vertical'></Divider>
               <a href='javascript:;'>
                 <Popconfirm title='确认删除？' 
                   cancelText='取消' okText='确认' 
                   onConfirm={() => _self.onDelete(record,index)}>
-                  <Icon type='delete'></Icon>
-                  删除
+                  <Icon type='delete'></Icon>删除
                 </Popconfirm>
               </a>
             </span>
@@ -107,6 +106,11 @@ let tableMixNativ = {
     handleEdit(record){
       return () => {
         this.setState({editingKey:record.key})
+      }
+    },
+    showDetailInfo(record){
+      return () => {
+        this.setState({showEditTable:!this.state.showEditTable})
       }
     },
     save(form,key){
@@ -129,6 +133,8 @@ let tableMixNativ = {
       },500)
     },
     isEditing(record){
+      console.log(record.key,'key')
+      console.log(this.state.editingKey,'state key')
       return record.key === this.state.editingKey
     },
     handleAdd(){

@@ -1,6 +1,7 @@
 import React from 'react'
 import loadable from '../util/loadable'
 import {RenderRoutes} from './utils'
+// import Page1 from '../views/user/page1'
 const UI = ({routes}) => (
   <div>
     <h3>UI</h3>

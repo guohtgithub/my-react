@@ -8,5 +8,5 @@ const EditableRow = ({form,index,...props}) => (
   </EditableContext.Provider>
 );
 
-const EditableFormRow = Form.Create()(EditableRow)
+const EditableFormRow = Form.create()(EditableRow)
 export default EditableFormRow

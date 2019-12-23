@@ -31,7 +31,7 @@ class MyForm extends React.Component {
     }
   }
   render(){
-    const {getFieldDecorator} = this.props.from
+    const {getFieldDecorator} = this.props.form
     const formItemLayout = {
       labelCol:{
         xs:{span:24},
@@ -86,7 +86,7 @@ class AddModel extends React.Component{
     })
   }
   handleOk = () => {
-    this.setState({loding:true})
+    this.setState({loading:true})
   }
 
   handleCancel = () => {
@@ -115,10 +115,16 @@ class AddModel extends React.Component{
   render(){
     const {visible,loading} = this.state
     let {addUserList} = this.props
-    console.log(loading)
+    
     return (
       <div>
-        <Modal visible={visible} title='Title' onOk={this.handleOk} onCancle={this.handleCancel} footer={null}>
+        <Modal 
+          visible={visible} 
+          title='Title' 
+          onOk={this.handleOk} 
+          onCancel={this.handleCancel} 
+          footer={null}
+        >
           <ModelForm loading={loading} visible={visible} addUserList={addUserList}></ModelForm>
         </Modal>
       </div>
