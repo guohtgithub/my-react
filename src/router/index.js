@@ -15,6 +15,7 @@ const Animation = () => <h3>Animation</h3>
 const From = () => <h3>From</h3>
 const Page1 = loadable(()=>import('../views/user/page1'))
 const Page2 = loadable(()=>import('../views/user/page2'))
+// const tableEdit = loadable(()=>import('../views/user/tableEdit'))
 const register = loadable(()=>import('../views/register/index'))
 const Index = loadable(()=>import('../views/layout/index'))
 const Login = loadable(()=>import('../views/login/index'))

@@ -79,6 +79,7 @@ class TableComponent extends React.Component{
   render(){
     const state = {...this.state,...this.props}
     let {data,handleAdd,columns,deleteIndex,showEditTable} = state
+    console.log(data,'table data')
     return (
       <div>
         {showEditTable && <div className="components-table-demo-control-bar">

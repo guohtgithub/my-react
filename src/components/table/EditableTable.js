@@ -46,25 +46,30 @@ class EditableTable extends React.Component{
     let state = {...this.state,...this.props}
     let {data,columns,rowClassName,editingKey} = state
     columns = columns.map(col => {
-      if(!col.editable){
+      if(!col.editable)
         return col
-      }
+      
       return{
         ...col,
-        onCell:record => {
-          return ({
+        onCell:record => 
+          ({
             record,
             inputType:col.dataIndex === 'phone'?'number':'text',
             dataIndex:col.dataIndex,
             title:col.title,
             editing:this.isEditing(record,editingKey)
           })
-        }
       }
     })
-    
+
     return (
-      <Table {...state} components={components} dataSource={data} rowClassName={rowClassName} columns={columns} />
+      <Table 
+        {...state} 
+        components={components} 
+        dataSource={data} 
+        rowClassName={rowClassName} 
+        columns={columns} 
+      />
     )
   }
 }

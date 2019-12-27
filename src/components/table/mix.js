@@ -45,7 +45,7 @@ let tableMixNativ = {
         key:'username',
         width:150,
         editable:true,
-        render:text => <a href="javascript:void(0)">{text}</a>
+        render:text => <a>{text}</a>
       },{
         title:'手机号码',
         dataIndex:'phone',
@@ -70,8 +70,7 @@ let tableMixNativ = {
               <span>
                 <EditableContext.Consumer>
                   {form => (
-                    <a 
-                      href='javascript:;' 
+                    <a
                       onClick={() => _self.save(form,record.key)}
                       style={{marginRight:8}}
                     >
@@ -87,11 +86,11 @@ let tableMixNativ = {
           }
           return(
             <span>
-              <a href='javascrip:;' onClick={_self.showDetailInfo(record)}><Icon type='show'></Icon>查看详情</a>
+              <a onClick={_self.showDetailInfo(record)}><Icon type='show'></Icon>查看详情</a>
               <Divider type='vertical'></Divider>
-              <a href='javascript:;' onClick={_self.handleEdit(record)}><Icon type='edit'></Icon>编辑</a>
+              <a  onClick={_self.handleEdit(record)}><Icon type='edit'></Icon>编辑</a>
               <Divider type='vertical'></Divider>
-              <a href='javascript:;'>
+              <a>
                 <Popconfirm title='确认删除？' 
                   cancelText='取消' okText='确认' 
                   onConfirm={() => _self.onDelete(record,index)}>
@@ -104,6 +103,7 @@ let tableMixNativ = {
       }])
     },
     handleEdit(record){
+      console.log(record,'is edit key')
       return () => {
         this.setState({editingKey:record.key})
       }
@@ -133,8 +133,6 @@ let tableMixNativ = {
       },500)
     },
     isEditing(record){
-      console.log(record.key,'key')
-      console.log(this.state.editingKey,'state key')
       return record.key === this.state.editingKey
     },
     handleAdd(){
