@@ -3,6 +3,8 @@ import React from 'react'
 import {ErrorBoundary,BuggyCounter} from './reactAdvanced/errorBoundary'
 
 import RefsDom from './reactAdvanced/refsDom'
+import ReactRefProps from './reactAdvanced/reactRefProps.js'
+import FragTable from './reactAdvanced/fragments.js'
 
 class ReactAdvanced extends React.Component{
   constructor(props){
@@ -32,6 +34,10 @@ class ReactAdvanced extends React.Component{
 
         <h2>ref property</h2>
         <RefsDom></RefsDom>
+        <h2>React Ref</h2>
+        <ReactRefProps />
+        <h2>FragTable div</h2>
+        <FragTable ></FragTable>
       </div>
     )
   }
