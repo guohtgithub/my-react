@@ -30,3 +30,6 @@
 .ant-input-number{
   width: 150px;
 }
+.ant-layout-sider-children{
+  position: fixed;
+}

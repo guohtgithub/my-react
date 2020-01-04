@@ -17,6 +17,7 @@ class MySlider extends Component{
         trigger={null}
         collapsible
         collapsed={slidecollapsed}
+        // style={{position:'fixed'}}
       >
         <div className="logo" />
           <div onClick={getRouterConfig}>

@@ -5,6 +5,11 @@ import {ErrorBoundary,BuggyCounter} from './reactAdvanced/errorBoundary'
 import RefsDom from './reactAdvanced/refsDom'
 import ReactRefProps from './reactAdvanced/reactRefProps.js'
 import FragTable from './reactAdvanced/fragments.js'
+import Example from './reactAdvanced/plugin'
+import JsxAdvanced from './reactAdvanced/jsxadvanced'
+import Father from './reactAdvanced/portals'
+import TickTock from './reactAdvanced/es6'
+import MouseTracker from './reactAdvanced/renderProps.js'
 
 class ReactAdvanced extends React.Component{
   constructor(props){
@@ -38,6 +43,15 @@ class ReactAdvanced extends React.Component{
         <ReactRefProps />
         <h2>FragTable div</h2>
         <FragTable ></FragTable>
+        <h2>plugin</h2>
+        <Example />
+        <h2>JSX Grammar</h2>
+        <JsxAdvanced />
+        <h2>Portals 子组件渲染父组件之外的组件</h2>
+        <Father />
+        <h2>ES6 javascript</h2>
+        <TickTock />
+        <MouseTracker />
       </div>
     )
   }
